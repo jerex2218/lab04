@@ -154,7 +154,46 @@ target_include_directories(hello_world PRIVATE
     ../formatter_lib
 )
 EOF
-$ cd ..
+$ cmake -B build
+-- The C compiler identification is GNU 13.3.0
+-- The CXX compiler identification is GNU 13.3.0
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /usr/bin/cc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/bin/c++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+CMake Deprecation Warning at formatter_ex_lib/CMakeLists.txt:1 (cmake_minimum_required):
+  Compatibility with CMake < 3.5 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value or use a ...<max> suffix to tell
+  CMake that the project does not need compatibility with older versions.
+
+
+-- Configuring done (0.8s)
+-- Generating done (0.0s)
+-- Build files have been written to: /home/student/Documents/test/lab03/build
+$ cmake --build build
+[ 10%] Building CXX object formatter_lib/CMakeFiles/formatter.dir/formatter.cpp.o
+[ 20%] Linking CXX static library libformatter.a
+[ 20%] Built target formatter
+[ 30%] Building CXX object formatter_ex_lib/CMakeFiles/formatter_ex.dir/formatter_ex.cpp.o
+[ 40%] Linking CXX static library libformatter_ex.a
+[ 40%] Built target formatter_ex
+[ 50%] Building CXX object solver_lib/CMakeFiles/solver_lib.dir/solver.cpp.o
+[ 60%] Linking CXX static library libsolver_lib.a
+[ 60%] Built target solver_lib
+[ 70%] Building CXX object solver_application/CMakeFiles/solver.dir/equation.cpp.o
+[ 80%] Linking CXX executable solver
+[ 80%] Built target solver
+[ 90%] Building CXX object hello_world_application/CMakeFiles/hello_world.dir/hello_world.cpp.o
+[100%] Linking CXX executable hello_world
+[100%] Built target hello_world
 ```
 
 

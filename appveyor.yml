@@ -1,0 +1,7 @@
+image: Visual Studio 2019
+
+build_script:
+  - mkdir _build
+  - cd _build
+  - cmake ..
+  - cmake --build . --config Release

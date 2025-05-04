@@ -1,15 +1,6 @@
 language: cpp
-
-compiler:
-  - gcc
-
-addons:
-  apt:
-    packages:
-      - cmake
-      - build-essential
-
+compiler: gcc
 script:
-  - mkdir -p _build && cd _build || exit 1
-  - cmake -DCMAKE_BUILD_TYPE=Release ..
-  - cmake --build . -- -j$(nproc)
+  - mkdir -p _build && cd _build
+  - cmake ..
+  - cmake --build .

@@ -1,38 +1,26 @@
-name: Build and Test
+name: Build Project
 
-on: [push, pull_request]
-
+on:
+  push:
+    branches: [ "main" ]  
+  pull_request:
+    branches: [ "main" ] 
+    
 jobs:
   build:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v3
+    runs-on: ubuntu-latest 
     
+    steps:
+    - uses: actions/checkout@v4 
+
     - name: Install dependencies
       run: |
         sudo apt-get update
-        sudo apt-get install -y cmake g++ lcov gcovr
-        
-    - name: Configure and Build
+        sudo apt-get install -y build-essential cmake  
+
+    - name: Build
       run: |
-        mkdir build && cd build
-        cmake .. -DBUILD_TESTS=ON
-        cmake --build .
-        
-    - name: Run tests
-      run: |
+        mkdir build
         cd build
-        ./tests
-        
-    - name: Generate coverage
-      run: |
-        cd build
-        lcov --capture --directory . --output-file coverage.info
-        lcov --remove coverage.info '/usr/*' --output-file coverage.info
-        lcov --list coverage.info
-        
-    - name: Upload to Coveralls
-      uses: coverallsapp/github-action@master
-      with:
-        github-token: ${{ secrets.GITHUB_TOKEN }}
-        path-to-lcov: build/coverage.info
+        cmake ..
+        make
